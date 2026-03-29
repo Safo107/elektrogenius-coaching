@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElektroGenius Coaching – Dein Weg in die Elektrobranche</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2e;
+    --navy2: #0f2035;
+    --navy3: #161b22;
+    --cyan: #00c6ff;
+    --orange: #f5a623;
+    --green: #3fb950;
+    --red: #f85149;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --text3: #7a95b0;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,198,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,198,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,27,46,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-badge {
+    width: 36px; height: 36px;
+    background: #1c2c55;
+    border: 1.5px solid var(--orange);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    color: var(--orange);
+  }
+  .nav-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+  }
+  .nav-title span { color: var(--cyan); }
+  .nav-cta {
+    background: var(--orange);
+    color: #000;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-content { max-width: 700px; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,198,255,0.08);
+    border: 0.5px solid rgba(0,198,255,0.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero h1 .line2 { color: var(--cyan); display: block; }
+  .hero h1 .line3 { color: var(--orange); display: block; }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text2);
+    max-width: 520px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-sub strong { color: var(--text); }
+
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-secondary {
+    background: rgba(0,198,255,0.08);
+    color: var(--cyan);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: 0.5px solid rgba(0,198,255,0.3);
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .btn-secondary:hover { transform: translateY(-2px); background: rgba(0,198,255,0.14); }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 0.5px solid var(--border);
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 4px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ANGEBOTE ── */
+  .section-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 5vw, 48px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 48px;
+  }
+  .section-title span { color: var(--cyan); }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--navy2);
+    border: 0.5px solid var(--border2);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,198,255,0.4);
+  }
+  .card.featured {
+    border-color: rgba(245,166,35,0.5);
+    background: linear-gradient(135deg, rgba(245,166,35,0.06) 0%, var(--navy2) 60%);
+  }
+  .card.featured::before {
+    content: 'Beliebt';
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--orange);
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .card-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .card-features {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+  .card-features li {
+    font-size: 13px;
+    color: var(--text3);
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .card-features li:last-child { border-bottom: none; }
+  .card-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .card-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+  .card-price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text3);
+    font-family: 'Barlow', sans-serif;
+  }
+  .card-btn {
+    display: block;
+    text-align: center;
+    background: var(--navy3);
+    border: 0.5px solid var(--border2);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .card-btn:hover {
+    background: rgba(0,198,255,0.08);
+    border-color: rgba(0,198,255,0.3);
+    color: var(--cyan);
+  }
+  .card.featured .card-btn {
+    background: var(--orange);
+    color: #000;
+    border-color: var(--orange);
+  }
+  .card.featured .card-btn:hover { opacity: 0.85; }
+
+  /* ── ABLAUF ── */
+  .steps {
+    background: var(--navy2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .steps-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 64px;
+    color: rgba(0,198,255,0.12);
+    line-height: 1;
+  }
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text);
+  }
+  .step-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* ── ÜBER MICH ── */
+  .about {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-badge {
+    width: 120px; height: 120px;
+    background: #1c2c55;
+    border: 2px solid var(--orange);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+  .about-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .about-role {
+    font-size: 14px;
+    color: var(--cyan);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .about-text {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: rgba(0,198,255,0.08);
+    border: 0.5px solid rgba(0,198,255,0.25);
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .about-visual {
+    background: var(--navy2);
+    border: 0.5px solid var(--border2);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .about-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .about-stat {
+    background: var(--navy);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .about-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--orange);
+  }
+  .about-stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 4px;
+  }
+
+  /* ── KONTAKT ── */
+  .contact {
+    background: var(--navy2);
+    border-top: 0.5px solid var(--border);
+  }
+  .contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .contact-inner .section-title { margin-bottom: 16px; }
+  .contact-sub {
+    font-size: 16px;
+    color: var(--text2);
+    margin-bottom: 48px;
+  }
+  .contact-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .contact-option {
+    background: var(--navy);
+    border: 0.5px solid var(--border2);
+    border-radius: 14px;
+    padding: 24px;
+    text-decoration: none;
+    transition: transform 0.15s, border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-option:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0,198,255,0.4);
+  }
+  .contact-option .icon { font-size: 28px; }
+  .contact-option .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+  }
+  .contact-option .hint {
+    font-size: 12px;
+    color: var(--text3);
+  }
+  .contact-option.whatsapp { border-color: rgba(63,185,80,0.3); }
+  .contact-option.whatsapp .label { color: var(--green); }
+  .contact-option.instagram { border-color: rgba(245,166,35,0.3); }
+  .contact-option.instagram .label { color: var(--orange); }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid var(--border);
+  }
+  footer p { font-size: 12px; color: var(--text3); }
+  footer a { color: var(--cyan); text-decoration: none; font-size: 12px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .section-wrap, .steps-inner { padding: 60px 20px; }
+    .about { grid-template-columns: 1fr; padding: 60px 20px; gap: 32px; }
+    .contact-inner { padding: 60px 20px; }
+    .contact-options { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-badge">EG</div>
+    <span class="nav-title">Elektro<span>Genius</span></span>
+  </a>
+  <a href="#kontakt" class="nav-cta">Jetzt anfragen →</a>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">ElektroGenius Coaching</div>
+      <h1>
+        Dein Weg
+        <span class="line2">in die</span>
+        <span class="line3">Elektrobranche</span>
+      </h1>
+      <p class="hero-sub">
+        Du willst einen <strong>Ausbildungsplatz als Elektriker</strong> oder brauchst Hilfe bei Bewerbung und Lebenslauf? Wir helfen dir — als ElektroGenius Team mit eigener Erfahrung.
+      </p>
+      <div class="hero-buttons">
+        <a href="#angebote" class="btn-primary">Angebote ansehen</a>
+        <a href="#kontakt" class="btn-secondary">Kostenlos anfragen</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Praxiserfahrung</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">⚡</div>
+          <div class="stat-label">Schnelle Rückmeldung</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1:1</div>
+          <div class="stat-label">Persönliche Beratung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANGEBOTE -->
+<section id="angebote">
+  <div class="section-wrap">
+    <div class="section-label">Was ich anbiete</div>
+    <div class="section-title">Meine <span>Angebote</span></div>
+    <div class="cards-grid">
+
+      <!-- Lebenslauf -->
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <div class="card-title">Lebenslauf-Check</div>
+        <div class="card-desc">Wir prüfen deinen Lebenslauf und gebe dir konkretes Feedback — was gut ist und was geändert werden muss.</div>
+        <ul class="card-features">
+          <li>Detailliertes schriftliches Feedback</li>
+          <li>Layouttipps für Elektro-Bewerber</li>
+          <li>Rückmeldung innerhalb 48h</li>
+        </ul>
+        <div class="card-price">19€ <span>einmalig</span></div>
+        <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
+      </div>
+
+      <!-- Bewerbungspaket -->
+      <div class="card featured">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Bewerbungspaket</div>
+        <div class="card-desc">Das komplette Paket — Lebenslauf, Anschreiben und Vorbereitung auf das Vorstellungsgespräch.</div>
+        <ul class="card-features">
+          <li>Lebenslauf überarbeiten</li>
+          <li>Anschreiben erstellen</li>
+          <li>Vorstellungsgespräch vorbereiten</li>
+          <li>Unbegrenzte Korrekturrunden</li>
+        </ul>
+        <div class="card-price">39€ <span>einmalig</span></div>
+        <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
+      </div>
+
+      <!-- Ausbildungsplatz -->
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <div class="card-title">Ausbildungsplatz finden</div>
+        <div class="card-desc">Wir helfen dir dabei, den richtigen Betrieb zu finden und zeige dir wie du dich optimal bewirbst.</div>
+        <ul class="card-features">
+          <li>Suche nach passenden Betrieben</li>
+          <li>Bewerbungsstrategie entwickeln</li>
+          <li>Tipps aus eigener Erfahrung</li>
+        </ul>
+        <div class="card-price">29€ <span>einmalig</span></div>
+        <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
+      </div>
+
+      <!-- Zoom Beratung -->
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <div class="card-title">1:1 Beratung per Zoom</div>
+        <div class="card-desc">Persönliches Gespräch — wir besprechen deine Situation und wir geben dir konkrete Tipps für deinen nächsten Schritt.</div>
+        <ul class="card-features">
+          <li>60 Minuten Zoom-Call</li>
+          <li>Individuelle Beratung</li>
+          <li>Nachbereitung per WhatsApp</li>
+        </ul>
+        <div class="card-price">25€ <span>pro Session</span></div>
+        <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section class="steps">
+  <div class="steps-inner">
+    <div class="section-label">So läuft es ab</div>
+    <div class="section-title">In <span>4 Schritten</span> zum Ziel</div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Anfrage senden</div>
+        <div class="step-desc">Schreib uns per Instagram oder E-Mail — beschreibe kurz deine Situation und was du brauchst.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Erstgespräch</div>
+        <div class="step-desc">Wir klären kurz was du brauchst und welches Paket am besten passt. Kostenlos und unverbindlich.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Coaching starten</div>
+        <div class="step-desc">Nach Buchung und Zahlung starten wir direkt. Du bekommst schnelle Rückmeldungen und konkretes Feedback.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Erfolgreich bewerben</div>
+        <div class="step-desc">Mit einem starken Lebenslauf und Anschreiben gehst du vorbereitet in deine Bewerbungen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
+<section>
+  <div class="about">
+    <div class="about-left">
+      <div class="about-badge">EG</div>
+      <div class="about-name">Safin Ali</div>
+      <div class="about-role">⚡ Elektriker Geselle & Gründer ElektroGenius</div>
+      <p class="about-text">
+        Wir haben die Ausbildung zum Elektroniker für Energie- und Gebäudetechnik abgeschlossen und weiß genau, worauf Betriebe bei Bewerbungen achten. Mit ElektroGenius helfen wir anderen dabei, ihren Weg in die Elektrobranche zu finden.
+      </p>
+      <div class="about-tags">
+        <span class="tag">Elektroniker Geselle</span>
+        <span class="tag">ElektroGenius</span>
+        <span class="tag">MaterialCheck</span>
+        <span class="tag">Bewerbungscoach</span>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="section-label" style="margin-bottom: 20px;">Zahlen & Fakten</div>
+      <div class="about-stat-grid">
+        <div class="about-stat">
+          <div class="about-stat-num">3+</div>
+          <div class="about-stat-label">Jahre Erfahrung</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">⚡</div>
+          <div class="about-stat-label">Elektrobranche</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">Praxisnah</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">1:1</div>
+          <div class="about-stat-label">Persönlich</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+  <div class="contact-inner">
+    <div class="section-label">Kontakt</div>
+    <div class="section-title">Jetzt <span>anfragen</span></div>
+    <p class="contact-sub">Schreib uns einfach — wir melden uns schnellstmöglich zurück und wir besprechen wie wir dir helfen können.</p>
+    <div class="contact-options">
+      <a href="/cdn-cgi/l/email-protection#126173747b7c3c7652777e777966607d75777c7b67613c7677" class="contact-option instagram">
+        <div class="icon">✉️</div>
+        <div class="label">E-Mail</div>
+        <div class="hint"><span class="__cf_email__" data-cfemail="f68597909f98d892b6939a939d8284999193989f8385d89293">[email&#160;protected]</span></div>
+      </a>
+      <a href="https://instagram.com/elektrogenius.de" target="_blank" class="contact-option instagram">
+        <div class="icon">📸</div>
+        <div class="label">Instagram</div>
+        <div class="hint">@elektrogenius.de</div>
+      </a>
+    </div>
+    <p style="font-size: 13px; color: var(--text3);">Kostenlose Erstanfrage — unverbindlich und ohne Verpflichtung.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ElektroGenius · Safin Ali · <a href="https://elektrogenius.de">elektrogenius.de</a></p>
+  <div style="display:flex; gap: 16px;">
+    <a href="https://
