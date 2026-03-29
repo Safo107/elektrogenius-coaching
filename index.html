@@ -22,9 +22,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--navy);
     color: var(--text);
@@ -34,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* ── GRID OVERLAY ── */
   body::before {
     content: '';
     position: fixed;
@@ -47,7 +44,6 @@
     z-index: 0;
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -60,12 +56,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .nav-badge {
     width: 36px; height: 36px;
     background: #1c2c55;
@@ -73,483 +64,195 @@
     border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 14px;
-    color: var(--orange);
+    font-weight: 900; font-size: 14px; color: var(--orange);
   }
-  .nav-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text);
-  }
+  .nav-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--text); }
   .nav-title span { color: var(--cyan); }
   .nav-cta {
-    background: var(--orange);
-    color: #000;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 8px 18px;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: opacity 0.2s;
+    background: var(--orange); color: #000;
+    font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px;
+    padding: 8px 18px; border-radius: 20px; text-decoration: none; transition: opacity 0.2s;
   }
   .nav-cta:hover { opacity: 0.85; }
 
-  /* ── SECTIONS ── */
   section { position: relative; z-index: 1; }
 
-  /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
+    display: flex; align-items: center;
     padding: 120px 40px 80px;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 1100px; margin: 0 auto;
   }
   .hero-content { max-width: 700px; }
-
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0,198,255,0.08);
-    border: 0.5px solid rgba(0,198,255,0.3);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--cyan);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s ease both;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,198,255,0.08); border: 0.5px solid rgba(0,198,255,0.3);
+    border-radius: 20px; padding: 6px 14px;
+    font-size: 12px; font-weight: 600; color: var(--cyan);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 24px; animation: fadeUp 0.6s ease both;
   }
   .hero-eyebrow::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--cyan);
-    animation: pulse 1.5s ease-in-out infinite;
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cyan); animation: pulse 1.5s ease-in-out infinite;
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.7); }
   }
-
   .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(48px, 8vw, 80px);
-    line-height: 0.95;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-    animation: fadeUp 0.6s ease 0.1s both;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(48px, 8vw, 80px); line-height: 0.95;
+    text-transform: uppercase; letter-spacing: -1px;
+    margin-bottom: 20px; animation: fadeUp 0.6s ease 0.1s both;
   }
   .hero h1 .line2 { color: var(--cyan); display: block; }
   .hero h1 .line3 { color: var(--orange); display: block; }
-
   .hero-sub {
-    font-size: 18px;
-    color: var(--text2);
-    max-width: 520px;
-    margin-bottom: 36px;
-    line-height: 1.7;
-    animation: fadeUp 0.6s ease 0.2s both;
+    font-size: 18px; color: var(--text2); max-width: 520px;
+    margin-bottom: 36px; line-height: 1.7; animation: fadeUp 0.6s ease 0.2s both;
   }
   .hero-sub strong { color: var(--text); }
-
   .hero-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    display: flex; gap: 12px; flex-wrap: wrap;
     animation: fadeUp 0.6s ease 0.3s both;
   }
   .btn-primary {
-    background: var(--orange);
-    color: #000;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 14px 28px;
-    border-radius: 8px;
-    text-decoration: none;
+    background: var(--orange); color: #000; font-weight: 700; font-size: 15px;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none;
     transition: transform 0.15s, opacity 0.15s;
   }
   .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
   .btn-secondary {
-    background: rgba(0,198,255,0.08);
-    color: var(--cyan);
-    font-weight: 600;
-    font-size: 15px;
-    padding: 14px 28px;
-    border-radius: 8px;
-    border: 0.5px solid rgba(0,198,255,0.3);
-    text-decoration: none;
-    transition: transform 0.15s, background 0.15s;
+    background: rgba(0,198,255,0.08); color: var(--cyan); font-weight: 600; font-size: 15px;
+    padding: 14px 28px; border-radius: 8px; border: 0.5px solid rgba(0,198,255,0.3);
+    text-decoration: none; transition: transform 0.15s, background 0.15s;
   }
   .btn-secondary:hover { transform: translateY(-2px); background: rgba(0,198,255,0.14); }
 
+  /* Calendly Button */
+  .btn-calendly {
+    background: linear-gradient(135deg, #006BFF, #0052cc);
+    color: #fff; font-weight: 700; font-size: 15px;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, opacity 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-calendly:hover { transform: translateY(-2px); opacity: 0.9; }
+
   .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 0.5px solid var(--border);
-    animation: fadeUp 0.6s ease 0.4s both;
+    display: flex; gap: 40px; margin-top: 60px; padding-top: 40px;
+    border-top: 0.5px solid var(--border); animation: fadeUp 0.6s ease 0.4s both;
   }
-  .stat-item {}
-  .stat-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 36px;
-    color: var(--orange);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: var(--text3);
-    margin-top: 4px;
-  }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 36px; color: var(--orange); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--text3); margin-top: 4px; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── ANGEBOTE ── */
-  .section-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 80px 40px;
-  }
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(32px, 5vw, 48px);
-    text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 48px;
-  }
+  .section-wrap { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(32px, 5vw, 48px); text-transform: uppercase; line-height: 1; margin-bottom: 48px; }
   .section-title span { color: var(--cyan); }
 
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
   .card {
-    background: var(--navy2);
-    border: 0.5px solid var(--border2);
-    border-radius: 16px;
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
+    background: var(--navy2); border: 0.5px solid var(--border2); border-radius: 16px; padding: 28px;
+    position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(0,198,255,0.4);
-  }
-  .card.featured {
-    border-color: rgba(245,166,35,0.5);
-    background: linear-gradient(135deg, rgba(245,166,35,0.06) 0%, var(--navy2) 60%);
-  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(0,198,255,0.4); }
+  .card.featured { border-color: rgba(245,166,35,0.5); background: linear-gradient(135deg, rgba(245,166,35,0.06) 0%, var(--navy2) 60%); }
   .card.featured::before {
-    content: 'Beliebt';
-    position: absolute;
-    top: 16px; right: 16px;
-    background: var(--orange);
-    color: #000;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
+    content: 'Beliebt'; position: absolute; top: 16px; right: 16px;
+    background: var(--orange); color: #000; font-size: 10px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px;
   }
-  .card-icon {
-    font-size: 32px;
-    margin-bottom: 16px;
-  }
-  .card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .card-desc {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  .card-features {
-    list-style: none;
-    margin-bottom: 24px;
-  }
+  .card.zoom-card { border-color: rgba(0,107,255,0.4); background: linear-gradient(135deg, rgba(0,107,255,0.06) 0%, var(--navy2) 60%); }
+  .card-icon { font-size: 32px; margin-bottom: 16px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; color: var(--text); margin-bottom: 8px; }
+  .card-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 20px; }
+  .card-features { list-style: none; margin-bottom: 24px; }
   .card-features li {
-    font-size: 13px;
-    color: var(--text3);
-    padding: 5px 0;
-    padding-left: 18px;
-    position: relative;
-    border-bottom: 0.5px solid var(--border);
+    font-size: 13px; color: var(--text3); padding: 5px 0; padding-left: 18px;
+    position: relative; border-bottom: 0.5px solid var(--border);
   }
   .card-features li:last-child { border-bottom: none; }
-  .card-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .card-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 32px;
-    color: var(--orange);
-    margin-bottom: 4px;
-  }
-  .card-price span {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--text3);
-    font-family: 'Barlow', sans-serif;
-  }
+  .card-features li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 11px; font-weight: 700; }
+  .card-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; color: var(--orange); margin-bottom: 4px; }
+  .card-price span { font-size: 14px; font-weight: 400; color: var(--text3); font-family: 'Barlow', sans-serif; }
   .card-btn {
-    display: block;
-    text-align: center;
-    background: var(--navy3);
-    border: 0.5px solid var(--border2);
-    color: var(--text);
-    font-weight: 600;
-    font-size: 13px;
-    padding: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    margin-top: 16px;
-    transition: background 0.15s, border-color 0.15s;
+    display: block; text-align: center; background: var(--navy3); border: 0.5px solid var(--border2);
+    color: var(--text); font-weight: 600; font-size: 13px; padding: 10px; border-radius: 8px;
+    text-decoration: none; margin-top: 16px; transition: background 0.15s, border-color 0.15s;
   }
-  .card-btn:hover {
-    background: rgba(0,198,255,0.08);
-    border-color: rgba(0,198,255,0.3);
-    color: var(--cyan);
-  }
-  .card.featured .card-btn {
-    background: var(--orange);
-    color: #000;
-    border-color: var(--orange);
-  }
+  .card-btn:hover { background: rgba(0,198,255,0.08); border-color: rgba(0,198,255,0.3); color: var(--cyan); }
+  .card.featured .card-btn { background: var(--orange); color: #000; border-color: var(--orange); }
   .card.featured .card-btn:hover { opacity: 0.85; }
+  .card-btn-calendly {
+    display: block; text-align: center;
+    background: linear-gradient(135deg, #006BFF, #0052cc);
+    color: #fff; font-weight: 700; font-size: 13px; padding: 10px; border-radius: 8px;
+    text-decoration: none; margin-top: 16px; transition: opacity 0.15s;
+  }
+  .card-btn-calendly:hover { opacity: 0.85; }
 
-  /* ── ABLAUF ── */
-  .steps {
-    background: var(--navy2);
-    border-top: 0.5px solid var(--border);
-    border-bottom: 0.5px solid var(--border);
+  /* Calendly Banner */
+  .calendly-banner {
+    background: linear-gradient(135deg, rgba(0,107,255,0.12), rgba(0,107,255,0.04));
+    border: 0.5px solid rgba(0,107,255,0.3);
+    border-radius: 16px; padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; margin-top: 32px; flex-wrap: wrap;
   }
-  .steps-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 80px 40px;
-  }
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 32px;
-    margin-top: 48px;
-  }
-  .step {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .step-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 64px;
-    color: rgba(0,198,255,0.12);
-    line-height: 1;
-  }
-  .step-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--text);
-  }
-  .step-desc {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.6;
-  }
+  .calendly-banner-left { display: flex; align-items: center; gap: 16px; }
+  .calendly-banner-icon { font-size: 36px; }
+  .calendly-banner-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; color: var(--text); }
+  .calendly-banner-sub { font-size: 13px; color: var(--text2); margin-top: 2px; }
 
-  /* ── ÜBER MICH ── */
-  .about {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .about-badge {
-    width: 120px; height: 120px;
-    background: #1c2c55;
-    border: 2px solid var(--orange);
-    border-radius: 24px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 48px;
-    color: var(--orange);
-    margin-bottom: 24px;
-  }
-  .about-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 32px;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .about-role {
-    font-size: 14px;
-    color: var(--cyan);
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  .about-text {
-    font-size: 15px;
-    color: var(--text2);
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-  .about-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .tag {
-    background: rgba(0,198,255,0.08);
-    border: 0.5px solid rgba(0,198,255,0.25);
-    color: var(--cyan);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 12px;
-    border-radius: 20px;
-  }
-  .about-visual {
-    background: var(--navy2);
-    border: 0.5px solid var(--border2);
-    border-radius: 20px;
-    padding: 32px;
-  }
-  .about-stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .about-stat {
-    background: var(--navy);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-  }
-  .about-stat-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 28px;
-    color: var(--orange);
-  }
-  .about-stat-label {
-    font-size: 11px;
-    color: var(--text3);
-    margin-top: 4px;
-  }
+  .steps { background: var(--navy2); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+  .steps-inner { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 48px; }
+  .step { display: flex; flex-direction: column; gap: 12px; }
+  .step-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 64px; color: rgba(0,198,255,0.12); line-height: 1; }
+  .step-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; color: var(--text); }
+  .step-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
 
-  /* ── KONTAKT ── */
-  .contact {
-    background: var(--navy2);
-    border-top: 0.5px solid var(--border);
-  }
-  .contact-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    text-align: center;
-  }
+  .about { max-width: 1100px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-badge { width: 120px; height: 120px; background: #1c2c55; border: 2px solid var(--orange); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 48px; color: var(--orange); margin-bottom: 24px; }
+  .about-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; color: var(--text); margin-bottom: 4px; }
+  .about-role { font-size: 14px; color: var(--cyan); font-weight: 600; margin-bottom: 20px; }
+  .about-text { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 24px; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { background: rgba(0,198,255,0.08); border: 0.5px solid rgba(0,198,255,0.25); color: var(--cyan); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 20px; }
+  .about-visual { background: var(--navy2); border: 0.5px solid var(--border2); border-radius: 20px; padding: 32px; }
+  .about-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .about-stat { background: var(--navy); border: 0.5px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .about-stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 28px; color: var(--orange); }
+  .about-stat-label { font-size: 11px; color: var(--text3); margin-top: 4px; }
+
+  .contact { background: var(--navy2); border-top: 0.5px solid var(--border); }
+  .contact-inner { max-width: 700px; margin: 0 auto; padding: 80px 40px; text-align: center; }
   .contact-inner .section-title { margin-bottom: 16px; }
-  .contact-sub {
-    font-size: 16px;
-    color: var(--text2);
-    margin-bottom: 48px;
-  }
-  .contact-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
+  .contact-sub { font-size: 16px; color: var(--text2); margin-bottom: 48px; }
+  .contact-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
   .contact-option {
-    background: var(--navy);
-    border: 0.5px solid var(--border2);
-    border-radius: 14px;
-    padding: 24px;
-    text-decoration: none;
-    transition: transform 0.15s, border-color 0.15s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    background: var(--navy); border: 0.5px solid var(--border2); border-radius: 14px; padding: 24px;
+    text-decoration: none; transition: transform 0.15s, border-color 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
   }
-  .contact-option:hover {
-    transform: translateY(-3px);
-    border-color: rgba(0,198,255,0.4);
-  }
+  .contact-option:hover { transform: translateY(-3px); border-color: rgba(0,198,255,0.4); }
   .contact-option .icon { font-size: 28px; }
-  .contact-option .label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text);
-  }
-  .contact-option .hint {
-    font-size: 12px;
-    color: var(--text3);
-  }
-  .contact-option.whatsapp { border-color: rgba(63,185,80,0.3); }
-  .contact-option.whatsapp .label { color: var(--green); }
+  .contact-option .label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--text); }
+  .contact-option .hint { font-size: 12px; color: var(--text3); }
   .contact-option.instagram { border-color: rgba(245,166,35,0.3); }
   .contact-option.instagram .label { color: var(--orange); }
 
-  /* ── FOOTER ── */
-  footer {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 0.5px solid var(--border);
-  }
+  footer { max-width: 1100px; margin: 0 auto; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; border-top: 0.5px solid var(--border); }
   footer p { font-size: 12px; color: var(--text3); }
   footer a { color: var(--cyan); text-decoration: none; font-size: 12px; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .hero { padding: 100px 20px 60px; }
@@ -558,6 +261,7 @@
     .about { grid-template-columns: 1fr; padding: 60px 20px; gap: 32px; }
     .contact-inner { padding: 60px 20px; }
     .contact-options { grid-template-columns: 1fr; }
+    .calendly-banner { flex-direction: column; text-align: center; }
     footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
   }
 </style>
@@ -570,7 +274,7 @@
     <div class="nav-badge">EG</div>
     <span class="nav-title">Elektro<span>Genius</span></span>
   </a>
-  <a href="#kontakt" class="nav-cta">Jetzt anfragen →</a>
+  <a href="https://calendly.com/safindeler10/1-1-beratung" target="_blank" class="nav-cta">Termin buchen →</a>
 </nav>
 
 <!-- HERO -->
@@ -584,10 +288,11 @@
         <span class="line3">Elektrobranche</span>
       </h1>
       <p class="hero-sub">
-        Du willst einen <strong>Ausbildungsplatz als Elektriker</strong> oder brauchst Hilfe bei Bewerbung und Lebenslauf? Wir helfen dir — als ElektroGenius Team mit eigener Erfahrung.
+        Du willst einen <strong>Ausbildungsplatz als Elektriker</strong> oder brauchst Hilfe bei Bewerbung und Lebenslauf? Wir helfen dir – als ElektroGenius Team mit eigener Erfahrung.
       </p>
       <div class="hero-buttons">
         <a href="#angebote" class="btn-primary">Angebote ansehen</a>
+        <a href="https://calendly.com/safindeler10/1-1-beratung" target="_blank" class="btn-calendly">📅 Termin buchen</a>
         <a href="#kontakt" class="btn-secondary">Kostenlos anfragen</a>
       </div>
       <div class="hero-stats">
@@ -615,11 +320,10 @@
     <div class="section-title">Unsere <span>Angebote</span></div>
     <div class="cards-grid">
 
-      <!-- Lebenslauf -->
       <div class="card">
         <div class="card-icon">📄</div>
         <div class="card-title">Lebenslauf-Check</div>
-        <div class="card-desc">Wir prüfen deinen Lebenslauf und geben dir konkretes Feedback — was gut ist und was geändert werden muss.</div>
+        <div class="card-desc">Wir prüfen deinen Lebenslauf und geben dir konkretes Feedback – was gut ist und was geändert werden muss.</div>
         <ul class="card-features">
           <li>Detailliertes schriftliches Feedback</li>
           <li>Layouttipps für Elektro-Bewerber</li>
@@ -629,11 +333,10 @@
         <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
       </div>
 
-      <!-- Bewerbungspaket -->
       <div class="card featured">
         <div class="card-icon">📋</div>
         <div class="card-title">Bewerbungspaket</div>
-        <div class="card-desc">Das komplette Paket — Lebenslauf, Anschreiben und Vorbereitung auf das Vorstellungsgespräch.</div>
+        <div class="card-desc">Das komplette Paket – Lebenslauf, Anschreiben und Vorbereitung auf das Vorstellungsgespräch.</div>
         <ul class="card-features">
           <li>Lebenslauf überarbeiten</li>
           <li>Anschreiben erstellen</li>
@@ -644,7 +347,6 @@
         <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
       </div>
 
-      <!-- Ausbildungsplatz -->
       <div class="card">
         <div class="card-icon">🔌</div>
         <div class="card-title">Ausbildungsplatz finden</div>
@@ -658,21 +360,33 @@
         <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
       </div>
 
-      <!-- Zoom Beratung -->
-      <div class="card">
+      <div class="card zoom-card">
         <div class="card-icon">💻</div>
         <div class="card-title">1:1 Beratung per Zoom</div>
-        <div class="card-desc">Persönliches Gespräch — wir besprechen deine Situation und geben dir konkrete Tipps für deinen nächsten Schritt.</div>
+        <div class="card-desc">Persönliches Gespräch – wir besprechen deine Situation und geben dir konkrete Tipps für deinen nächsten Schritt.</div>
         <ul class="card-features">
           <li>60 Minuten Zoom-Call</li>
           <li>Individuelle Beratung</li>
           <li>Nachbereitung per WhatsApp</li>
         </ul>
         <div class="card-price">25€ <span>pro Session</span></div>
-        <a href="#kontakt" class="card-btn">Jetzt anfragen</a>
+        <a href="https://calendly.com/safindeler10/1-1-beratung" target="_blank" class="card-btn-calendly">📅 Termin direkt buchen</a>
       </div>
 
     </div>
+
+    <!-- Calendly Banner -->
+    <div class="calendly-banner">
+      <div class="calendly-banner-left">
+        <div class="calendly-banner-icon">📅</div>
+        <div>
+          <div class="calendly-banner-title">Direkt einen Termin buchen</div>
+          <div class="calendly-banner-sub">1:1 Zoom-Beratung · 60 Minuten · 25€ · Montag–Freitag 18:00–22:00</div>
+        </div>
+      </div>
+      <a href="https://calendly.com/safindeler10/1-1-beratung" target="_blank" class="btn-calendly">📅 Jetzt buchen</a>
+    </div>
+
   </div>
 </section>
 
@@ -685,7 +399,7 @@
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-title">Anfrage senden</div>
-        <div class="step-desc">Schreib uns per Instagram oder E-Mail — beschreibe kurz deine Situation und was du brauchst.</div>
+        <div class="step-desc">Schreib uns per Instagram oder E-Mail – beschreibe kurz deine Situation und was du brauchst.</div>
       </div>
       <div class="step">
         <div class="step-num">02</div>
@@ -714,7 +428,7 @@
       <div class="about-name">Safin Deler Yezdin Al Ali</div>
       <div class="about-role">⚡ Elektriker Geselle & Gründer ElektroGenius</div>
       <p class="about-text">
-        Wir haben die Ausbildung zum Elektroniker für Energie- und Gebäudetechnik abgeschlossen und weiß genau, worauf Betriebe bei Bewerbungen achten. Mit ElektroGenius helfen wir anderen dabei, ihren Weg in die Elektrobranche zu finden.
+        Wir haben die Ausbildung zum Elektroniker für Energie- und Gebäudetechnik abgeschlossen und wissen genau, worauf Betriebe bei Bewerbungen achten. Mit ElektroGenius helfen wir anderen dabei, ihren Weg in die Elektrobranche zu finden.
       </p>
       <div class="about-tags">
         <span class="tag">Elektroniker Geselle</span>
@@ -752,7 +466,7 @@
   <div class="contact-inner">
     <div class="section-label">Kontakt</div>
     <div class="section-title">Jetzt <span>anfragen</span></div>
-    <p class="contact-sub">Schreib uns einfach — wir melden uns schnellstmöglich zurück und wir besprechen wie wir dir helfen können.</p>
+    <p class="contact-sub">Schreib uns einfach – wir melden uns schnellstmöglich zurück und besprechen wie wir dir helfen können.</p>
     <div class="contact-options">
       <a href="mailto:safin.d@elektrogenius.de" class="contact-option instagram">
         <div class="icon">✉️</div>
@@ -765,7 +479,8 @@
         <div class="hint">@elektrogenius.de</div>
       </a>
     </div>
-    <p style="font-size: 13px; color: var(--text3);">Kostenlose Erstanfrage — unverbindlich und ohne Verpflichtung.</p>
+    <a href="https://calendly.com/safindeler10/1-1-beratung" target="_blank" class="btn-calendly" style="display:inline-flex; margin-bottom: 20px;">📅 Zoom-Termin direkt buchen</a>
+    <p style="font-size: 13px; color: var(--text3);">Kostenlose Erstanfrage – unverbindlich und ohne Verpflichtung.</p>
   </div>
 </section>
 
@@ -773,7 +488,6 @@
 <footer>
   <p>© 2026 ElektroGenius · Safin Deler Yezdin Al Ali · <a href="https://elektrogenius.de">elektrogenius.de</a></p>
   <div style="display:flex; gap: 16px;">
-
     <a href="https://coaching.elektrogenius.de/impressum.html">Impressum</a>
     <a href="https://coaching.elektrogenius.de/datenschutz.html">Datenschutz</a>
   </div>
