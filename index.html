@@ -238,7 +238,7 @@
   .contact-inner { max-width: 700px; margin: 0 auto; padding: 80px 40px; text-align: center; }
   .contact-inner .section-title { margin-bottom: 16px; }
   .contact-sub { font-size: 16px; color: var(--text2); margin-bottom: 48px; }
-  .contact-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .contact-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
   .contact-option {
     background: var(--navy); border: 0.5px solid var(--border2); border-radius: 14px; padding: 24px;
     text-decoration: none; transition: transform 0.15s, border-color 0.15s;
@@ -472,15 +472,20 @@
     <div class="section-title">Jetzt <span>anfragen</span></div>
     <p class="contact-sub">Schreib uns einfach – wir melden uns schnellstmöglich zurück und besprechen wie wir dir helfen können.</p>
     <div class="contact-options">
-      <a href="mailto:safin.d@elektrogenius.de" class="contact-option instagram">
+      <a href="mailto:info@elektrogenius.de" class="contact-option instagram">
         <div class="icon"><i data-lucide="mail" style="color:var(--orange)"></i></div>
         <div class="label">E-Mail</div>
-        <div class="hint">safin.d@elektrogenius.de</div>
+        <div class="hint">info@elektrogenius.de</div>
       </a>
       <a href="https://instagram.com/elektrogenius.de" target="_blank" class="contact-option instagram">
         <div class="icon"><i data-lucide="instagram" style="color:var(--orange)"></i></div>
         <div class="label">Instagram</div>
         <div class="hint">@elektrogenius.de</div>
+      </a>
+      <a href="mailto:support@elektrogenius.de" class="contact-option instagram" style="border-color:rgba(79,195,247,0.3)">
+        <div class="icon"><i data-lucide="headphones" style="color:var(--cyan,#00c6ff)"></i></div>
+        <div class="label" style="color:var(--cyan,#00c6ff)">Support</div>
+        <div class="hint">Technische Probleme</div>
       </a>
     </div>
     <a href="https://calendly.com/safindeler10/1-1-beratung" target="_blank" class="btn-calendly" style="display:inline-flex; margin-bottom: 20px;"><i data-lucide="video" style="width:18px;height:18px;margin-right:6px"></i> Zoom-Termin direkt buchen</a>
