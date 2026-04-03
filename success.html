@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahlung erfolgreich – ElektroGenius Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2e; --cyan: #00c6ff; --orange: #f5a623; --green: #3fb950; --text: #e6edf3; --text2: #8b949e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy); color: var(--text);
+    font-family: 'Barlow', sans-serif; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px;
+    background-image: linear-gradient(rgba(0,198,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,198,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .card {
+    background: #112240; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+    padding: 48px 40px; max-width: 520px; width: 100%; text-align: center;
+  }
+  .check-circle {
+    width: 80px; height: 80px; border-radius: 50%; background: rgba(63,185,80,0.15);
+    border: 2px solid rgba(63,185,80,0.5); display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px; font-size: 36px;
+  }
+  h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--text); margin-bottom: 12px; }
+  .sub { color: var(--text2); font-size: 1rem; line-height: 1.6; margin-bottom: 32px; }
+  .product-badge {
+    display: inline-block; background: rgba(0,198,255,0.1); border: 1px solid rgba(0,198,255,0.3);
+    color: var(--cyan); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .steps { text-align: left; background: rgba(255,255,255,0.04); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .steps h3 { font-size: 0.85rem; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: rgba(0,198,255,0.15); border: 1px solid rgba(0,198,255,0.4); color: var(--cyan); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-text { font-size: 0.9rem; color: var(--text2); }
+  .btn-back {
+    display: inline-block; background: linear-gradient(135deg, var(--cyan), #0099cc);
+    color: #0d1b2e; padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 1rem;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .btn-back:hover { opacity: 0.9; }
+  .order-box {
+    background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.3);
+    border-radius: 12px; padding: 14px 20px; margin-bottom: 28px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .order-label { font-size: 0.8rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+  .order-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; color: var(--orange); letter-spacing: 0.05em; }
+  .contact { margin-top: 20px; font-size: 0.85rem; color: var(--text2); }
+  .contact a { color: var(--cyan); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="check-circle">✓</div>
+  <h1>Zahlung erfolgreich!</h1>
+  <p class="sub">Vielen Dank für dein Vertrauen. Wir haben deine Zahlung erhalten und melden uns innerhalb von 24–48 Stunden bei dir.</p>
+
+  <div class="product-badge" id="product-badge">ElektroGenius Coaching</div>
+
+  <div class="order-box">
+    <span class="order-label">Bestellnummer</span>
+    <span class="order-num" id="order-num">EG-2026-…</span>
+  </div>
+
+  <div class="steps">
+    <h3>Nächste Schritte</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Du erhältst eine Bestätigungs-E-Mail von Stripe mit deiner Zahlungsquittung.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Wir melden uns innerhalb von 24–48 Stunden per E-Mail oder WhatsApp bei dir.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Wir starten gemeinsam mit deinem Coaching-Paket.</div>
+    </div>
+  </div>
+
+  <a href="/" class="btn-back">Zurück zur Startseite</a>
+  <div class="contact">
+    Fragen? <a href="mailto:info@elektrogenius.de">info@elektrogenius.de</a> ·
+    <a href="https://instagram.com/elektrogenius.de" target="_blank">@elektrogenius.de</a>
+  </div>
+</div>
+
+<script>
+  const labels = {
+    cv: 'Lebenslauf-Check — 19€',
+    bewerbung: 'Bewerbungspaket — 39€',
+    ausbildung: 'Ausbildungsplatz finden — 29€',
+    call: '1:1 Beratung (Zoom) — 25€',
+  };
+  const params = new URLSearchParams(window.location.search);
+  const product = params.get('product');
+  if (product && labels[product]) {
+    document.getElementById('product-badge').textContent = labels[product];
+  }
+
+  // Bestellnummer: stabil für diese Sitzung (sessionStorage), EG-2026-XXXX
+  const SK = 'eg_order_' + (product || 'x');
+  let orderNum = sessionStorage.getItem(SK);
+  if (!orderNum) {
+    const rand = String(Math.floor(1000 + Math.random() * 9000));
+    orderNum = 'EG-2026-' + rand;
+    sessionStorage.setItem(SK, orderNum);
+  }
+  document.getElementById('order-num').textContent = orderNum;
+</script>
+</body>
+</html>
