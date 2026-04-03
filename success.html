@@ -16,7 +16,9 @@
     font-family: 'Barlow', sans-serif; min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 24px;
-    background-image: linear-gradient(rgba(0,198,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,198,255,0.03) 1px, transparent 1px);
+    background-image:
+      linear-gradient(rgba(0,198,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,198,255,0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
   .card {
@@ -29,15 +31,27 @@
     margin: 0 auto 24px; font-size: 36px;
   }
   h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--text); margin-bottom: 12px; }
-  .sub { color: var(--text2); font-size: 1rem; line-height: 1.6; margin-bottom: 32px; }
+  .sub { color: var(--text2); font-size: 1rem; line-height: 1.6; margin-bottom: 28px; }
   .product-badge {
     display: inline-block; background: rgba(0,198,255,0.1); border: 1px solid rgba(0,198,255,0.3);
     color: var(--cyan); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
+  .info-grid {
+    display: grid; gap: 10px; margin-bottom: 28px;
+  }
+  .info-row {
+    background: rgba(255,255,255,0.04); border-radius: 10px;
+    padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .info-row-label { font-size: 0.78rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; }
+  .info-row-val   { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+  .info-row-val.order { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; color: var(--orange); letter-spacing: 0.06em; }
+  .info-row-val.email { color: var(--cyan); font-size: 0.9rem; }
   .steps { text-align: left; background: rgba(255,255,255,0.04); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
   .steps h3 { font-size: 0.85rem; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
   .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+  .step:last-child { margin-bottom: 0; }
   .step-num { width: 24px; height: 24px; border-radius: 50%; background: rgba(0,198,255,0.15); border: 1px solid rgba(0,198,255,0.4); color: var(--cyan); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .step-text { font-size: 0.9rem; color: var(--text2); }
   .btn-back {
@@ -46,15 +60,17 @@
     text-decoration: none; transition: opacity 0.2s;
   }
   .btn-back:hover { opacity: 0.9; }
-  .order-box {
-    background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.3);
-    border-radius: 12px; padding: 14px 20px; margin-bottom: 28px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  }
-  .order-label { font-size: 0.8rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
-  .order-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; color: var(--orange); letter-spacing: 0.05em; }
   .contact { margin-top: 20px; font-size: 0.85rem; color: var(--text2); }
   .contact a { color: var(--cyan); text-decoration: none; }
+
+  /* Loading skeleton */
+  .skeleton {
+    display: inline-block; height: 1em; border-radius: 4px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 75%);
+    background-size: 200% 100%; animation: shimmer 1.4s infinite;
+    min-width: 120px;
+  }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 </style>
 </head>
 <body>
@@ -63,11 +79,17 @@
   <h1>Zahlung erfolgreich!</h1>
   <p class="sub">Vielen Dank für dein Vertrauen. Wir haben deine Zahlung erhalten und melden uns innerhalb von 24–48 Stunden bei dir.</p>
 
-  <div class="product-badge" id="product-badge">ElektroGenius Coaching</div>
+  <div class="product-badge" id="product-badge"><span class="skeleton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
 
-  <div class="order-box">
-    <span class="order-label">Bestellnummer</span>
-    <span class="order-num" id="order-num">EG-2026-…</span>
+  <div class="info-grid">
+    <div class="info-row">
+      <span class="info-row-label">Bestellnummer</span>
+      <span class="info-row-val order" id="order-num"><span class="skeleton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+    </div>
+    <div class="info-row" id="email-row" style="display:none">
+      <span class="info-row-label">E-Mail</span>
+      <span class="info-row-val email" id="email-val"></span>
+    </div>
   </div>
 
   <div class="steps">
@@ -93,28 +115,72 @@
   </div>
 </div>
 
+<script src="checkout.js"></script>
 <script>
-  const labels = {
-    cv: 'Lebenslauf-Check — 19€',
-    bewerbung: 'Bewerbungspaket — 39€',
+  // Fallback-Labels für ?product= (ohne session_id)
+  const LABELS = {
+    cv:         'Lebenslauf-Check — 19€',
+    bewerbung:  'Bewerbungspaket — 39€',
     ausbildung: 'Ausbildungsplatz finden — 29€',
-    call: '1:1 Beratung (Zoom) — 25€',
+    call:       '1:1 Beratung (Zoom) — 25€',
   };
-  const params = new URLSearchParams(window.location.search);
-  const product = params.get('product');
-  if (product && labels[product]) {
-    document.getElementById('product-badge').textContent = labels[product];
+
+  function setOrderNum(val) {
+    document.getElementById('order-num').textContent = val;
+  }
+  function setProduct(val) {
+    document.getElementById('product-badge').textContent = val;
+  }
+  function setEmail(val) {
+    if (!val) return;
+    document.getElementById('email-val').textContent = val;
+    document.getElementById('email-row').style.display = 'flex';
   }
 
-  // Bestellnummer: stabil für diese Sitzung (sessionStorage), EG-2026-XXXX
-  const SK = 'eg_order_' + (product || 'x');
-  let orderNum = sessionStorage.getItem(SK);
-  if (!orderNum) {
-    const rand = String(Math.floor(1000 + Math.random() * 9000));
-    orderNum = 'EG-2026-' + rand;
-    sessionStorage.setItem(SK, orderNum);
+  // Bestellnummer aus sessionStorage (stabil bei Reload)
+  function getOrCreateOrderNum(key) {
+    const sk = 'eg_order_' + key;
+    let num = sessionStorage.getItem(sk);
+    if (!num) {
+      num = 'EG-2026-' + String(Math.floor(1000 + Math.random() * 9000));
+      sessionStorage.setItem(sk, num);
+    }
+    return num;
   }
-  document.getElementById('order-num').textContent = orderNum;
+
+  async function init() {
+    const params    = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    const productKey = params.get('product');
+
+    // ── Wenn session_id vorhanden → Worker anfragen ──────────────────────────
+    if (sessionId && sessionId.startsWith('cs_') && typeof WORKER_URL !== 'undefined' && !WORKER_URL.includes('DEINNAME')) {
+      try {
+        const res  = await fetch(WORKER_URL + '/session?id=' + encodeURIComponent(sessionId));
+        const data = await res.json();
+
+        if (res.ok && data.orderNum) {
+          setProduct(data.label || data.productName || 'Coaching-Paket');
+          setOrderNum(data.orderNum);
+          setEmail(data.email);
+          return;
+        }
+      } catch (e) {
+        console.warn('[success] Session-Fetch fehlgeschlagen, Fallback.', e);
+      }
+    }
+
+    // ── Fallback: ?product= Parameter + lokale Bestellnummer ─────────────────
+    const key = productKey || sessionId || 'unknown';
+    setOrderNum(getOrCreateOrderNum(key));
+    if (productKey && LABELS[productKey]) {
+      setProduct(LABELS[productKey]);
+    } else {
+      setProduct('ElektroGenius Coaching');
+    }
+  }
+
+  init();
 </script>
 </body>
 </html>
