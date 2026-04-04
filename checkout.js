@@ -4,7 +4,7 @@
  * WORKER_URL nach dem Cloudflare-Deploy eintragen:
  *   z.B. https://elektrogenius-coaching-api.DEINNAME.workers.dev
  */
-const WORKER_URL = 'https://elektrogenius-coaching-api.DEINNAME.workers.dev';
+const WORKER_URL = 'https://fragrant-grass-046e.safindeler10.workers.dev';
 
 window.egCheckout = async function egCheckout(event, product) {
   event.preventDefault();
@@ -16,16 +16,18 @@ window.egCheckout = async function egCheckout(event, product) {
   btn.style.pointerEvents = 'none';
 
   try {
-    const res = await fetch(WORKER_URL + '/checkout', {
+    const res = await fetch(WORKER_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product }),
     });
 
     const data = await res.json();
 
-    if (!res.ok || !data.url) {
-      throw new Error(data.error || 'Unbekannter Fehler');
+    if (!data.url) {
+      alert('Fehler bei Zahlung');
+      btn.textContent = original;
+      btn.style.opacity = '';
+      btn.style.pointerEvents = '';
+      return;
     }
 
     window.location.href = data.url;
