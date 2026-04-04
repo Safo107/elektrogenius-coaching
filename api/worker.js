@@ -1,18 +1,30 @@
+const ALLOWED_ORIGIN = "https://coaching.elektrogenius.de";
+
 export default {
   async fetch(request, env) {
 
     if (request.method === "OPTIONS") {
       return new Response(null, {
         headers: {
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
           "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type",
         },
       });
     }
 
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
+    }
+
+    // Origin-Check: nur Requests von der eigenen Domain erlaubt
+    const origin = request.headers.get("Origin");
+    if (origin !== ALLOWED_ORIGIN) {
+      console.error(`[worker] Blocked request from unauthorized origin: ${origin}`);
+      return new Response("Forbidden", {
+        status: 403,
+        headers: { "Access-Control-Allow-Origin": ALLOWED_ORIGIN },
+      });
     }
 
     try {
@@ -40,18 +52,31 @@ export default {
 
       const data = await stripeRes.json();
 
+      if (data.error) {
+        console.error("[worker] Stripe API Fehler:", data.error);
+        return new Response(JSON.stringify({ error: data.error.message || "Stripe Fehler" }), {
+          status: 502,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+          },
+        });
+      }
+
       return new Response(JSON.stringify({ url: data.url }), {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
         },
       });
 
     } catch (err) {
-      return new Response("Stripe error", {
+      console.error("[worker] Unerwarteter Fehler:", err);
+      return new Response(JSON.stringify({ error: "Interner Fehler" }), {
         status: 500,
         headers: {
-          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
         },
       });
     }
