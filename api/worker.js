@@ -16,6 +16,11 @@ export default {
     }
 
     try {
+      const body = await request.json();
+
+      const product = body.product;
+      const amount  = body.amount;
+
       const stripeRes = await fetch("https://api.stripe.com/v1/checkout/sessions", {
         method: "POST",
         headers: {
@@ -25,10 +30,10 @@ export default {
         body: new URLSearchParams({
           mode: "payment",
           "line_items[0][price_data][currency]": "eur",
-          "line_items[0][price_data][product_data][name]": "Coaching 60min",
-          "line_items[0][price_data][unit_amount]": "2500",
+          "line_items[0][price_data][product_data][name]": product,
+          "line_items[0][price_data][unit_amount]": String(amount),
           "line_items[0][quantity]": "1",
-          success_url: "https://coaching.elektrogenius.de/success",
+          success_url: "https://coaching.elektrogenius.de/success.html",
           cancel_url: "https://coaching.elektrogenius.de",
         }).toString(),
       });
